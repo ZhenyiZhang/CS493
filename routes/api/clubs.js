@@ -14,6 +14,17 @@ router.get('/', (req,res) => {
     .then(clubs => res.json(clubs))
 });
 
+//searching
+router.get('/search/:clubname',(req,res) => {
+    Club.find({'name': req.params.clubname})
+    .then(club => res.json(club));
+});
+
+router.get('/:id', (req, res) => {
+    Club.findById(req.params.id)
+        .then(clubs => res.json(clubs));
+});
+
 //create a post
 router.post('/', (req,res) => {
     const newClub = new Club({

@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import AppNavBar from './components/AppNavBar';
 import ClubList from './components/ClubsList';
 import ClubModal from './components/ClubModal';
+import SearchModal from './components/SearchModal';
 import {Container} from 'reactstrap'; 
 import {Provider} from 'react-redux';
 import store from './store';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import FullListModal from './components/FullListModal';
 
 class App extends Component {
   render() {
@@ -15,7 +17,9 @@ class App extends Component {
       <div className="App">
       <AppNavBar/>
       <Container>
-        <ClubModal/>
+      <Container>
+      <SearchModal /> <ClubModal/> <FullListModal/>
+      </Container>
         <ClubList/>
       </Container>
       </div>

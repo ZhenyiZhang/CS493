@@ -1,5 +1,6 @@
 import axios from 'axios';
-import{GET_CLUBS, ADD_CLUB, DELETE_CLUB, CLUBS_LOADING} from './types';
+//search
+import{GET_CLUBS, ADD_CLUB, DELETE_CLUB, CLUBS_LOADING, CLUBS_SEARCH} from './types';
 
 export const getClubs = () => dispatch => {
 dispatch(setClubsLoading());
@@ -37,3 +38,11 @@ export const setClubsLoading = () => {
         type: CLUBS_LOADING
     }
 }
+
+//search
+export const searchClubs = (clubname) => dispatch => {
+            dispatch({
+                type: CLUBS_SEARCH,
+                payload: clubname
+            })
+};

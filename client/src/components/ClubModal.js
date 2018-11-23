@@ -35,7 +35,7 @@ class ClubModal extends Component {
       name: this.state.name
     };
 
-    // Add item via addItem action
+    // Add item via addClub action
     this.props.addClub(newClub);
 
     // Close modal
@@ -47,7 +47,7 @@ class ClubModal extends Component {
       <div>
         <Button
           color="dark"
-          style={{ marginBottom: '2rem' }}
+          style={{ marginBottom: '1rem' }}
           onClick={this.toggle}
         >
           Add Club
