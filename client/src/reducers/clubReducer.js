@@ -1,10 +1,11 @@
-import uuid from "uuid";
-import{GET_CLUBS, ADD_CLUB, DELETE_CLUB, CLUBS_LOADING} from '../actions/types';
+import { GET_CLUBS, ADD_CLUB, DELETE_CLUB, CLUBS_LOADING, CLUBS_SEARCH} from '../actions/types';
 
 const initialState = {
     clubs: [],
     loading: false
-} 
+}
+
+
 
 export default function(state = initialState, action) {
     switch(action.type) {
@@ -17,7 +18,7 @@ export default function(state = initialState, action) {
         case DELETE_CLUB:
         return {
             ...state,
-            clubs: state.clubs.filter(club => club.id !== action.payload)
+            clubs: state.clubs.filter(club => club._id !== action.payload)
         };
         case ADD_CLUB:
             return{
@@ -29,6 +30,13 @@ export default function(state = initialState, action) {
                 ...state,
                 loading: true
             };
+        //search
+        //club.name === action.payload   
+        case CLUBS_SEARCH:
+            return{
+                ...state,
+                clubs: state.clubs.filter(club => club.name.toLowerCase().startsWith(action.payload.toLowerCase()))
+            }
         default:
         return state;
     }
