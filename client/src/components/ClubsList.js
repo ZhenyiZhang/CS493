@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Container, ListGroup, ListGroupItem, Button} from 'reactstrap';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import {connect} from 'react-redux';
-import {getClubs,deleteClub,searchClubs} from '../actions/clubActions';
+import {getClubs,deleteClub} from '../actions/clubActions';
 import PropTypes from 'prop-types'; 
 
 
@@ -15,13 +15,24 @@ class ClubsList extends Component {
 
     onDeleteClick = (id) => {
         this.props.deleteClub(id);
-        this.setState({ state: this.state });
     };
 
     render() {
         const{clubs} = this.props.club;
         return(
             <Container>
+            {/* <Button 
+            color="dark"
+            style={{marginBottem: '2rem'}}
+            onClick =  {() => {
+                const name = prompt('Enter Club Name');
+                if (name) {
+                    this.setState(state => ({
+                        clubs: [...state.clubs, {id: uuid(), name}]
+                    }));
+                }
+            }}> Add Club
+            </Button> */}
             <ListGroup> 
             <TransitionGroup className="clubs-list"> 
             {clubs.map(({_id,name}) => (
@@ -37,7 +48,7 @@ class ClubsList extends Component {
                 </ListGroupItem>
                 </CSSTransition>
             ))}
-            </TransitionGroup> 
+            </TransitionGroup>
             </ListGroup>
             </Container>
         );
@@ -54,4 +65,4 @@ const mapStateToProps = (state) => ({
     club: state.club 
 });
 
-export default connect(mapStateToProps,{getClubs,deleteClub,searchClubs} ) (ClubsList);
+export default connect(mapStateToProps,{getClubs,deleteClub } ) (ClubsList);
